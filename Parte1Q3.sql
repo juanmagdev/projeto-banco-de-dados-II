@@ -1,0 +1,11 @@
+# Q3
+USE information_schema;
+SELECT COLUMN_NAME 'Colum Name',
+       j.TABLE_NAME 'Table name',
+       j.CONSTRAINT_NAME 'FK name'
+FROM TABLE_CONSTRAINTS j
+         JOIN KEY_COLUMN_USAGE k
+         ON j.CONSTRAINT_NAME = k.CONSTRAINT_NAME
+WHERE k.CONSTRAINT_SCHEMA = 'Chinook'
+  AND j.CONSTRAINT_TYPE = 'FOREIGN KEY'
+  AND j.TABLE_SCHEMA = 'Chinook';
